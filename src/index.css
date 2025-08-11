@@ -1,0 +1,483 @@
+/* 1. MODERN COLOR PALETTE & FONT DEFINITION
+------------------------------------------------- */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap');
+
+:root {
+  --font-body: 'Satoshi', sans-serif;
+  --font-heading: 'General Sans', sans-serif;
+
+  --color-background: #0D1117;
+  --color-panel: #161B22;
+  --color-text-primary: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-border: #30363D;
+  --color-accent: #58A6FF;
+  --color-accent-glow: rgba(88, 166, 255, 0.2);
+}
+
+/* 2. BASE & RESET STYLES
+------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 100px;
+}
+
+body {
+  background-color: var(--color-background);
+  background-image: radial-gradient(var(--color-text-secondary) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* 3. TYPOGRAPHY & GLOBAL ELEMENTS
+------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--color-text-secondary);
+  max-width: 65ch;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  filter: brightness(1.2);
+}
+
+/* 4. LAYOUT & REUSABLE COMPONENTS
+------------------------------------------------- */
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-panel {
+  padding: 6rem 0;
+}
+
+.section-heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-heading span {
+  color: var(--color-accent);
+  font-family: 'Satoshi', monospace;
+  font-weight: 500;
+}
+
+/* 5. NAVBAR STYLES
+------------------------------------------------- */
+/* ... All navbar styles are correct ... */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(22, 27, 34, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-panel);
+  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+  border-radius: 9999px;
+  text-decoration: none;
+}
+
+.navbar-logo span {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+}
+
+.desktop-nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.desktop-nav-links a {
+  font-family: var(--font-heading);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+.desktop-contact-btn {
+  font-family: var(--font-heading);
+  color: var(--color-background);
+  background-color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.desktop-contact-btn:hover {
+  filter: brightness(1.2);
+}
+
+/* Mobile Menu Styles */
+.mobile-menu-button {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--color-background);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.mobile-menu-overlay ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.mobile-menu-overlay ul li a {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  padding: 1rem;
+  display: block;
+}
+
+.mobile-menu-contact-btn {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-background);
+  background-color: var(--color-accent);
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+}
+
+
+/* 6. HERO SECTION STYLES
+------------------------------------------------- */
+.hero-section {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  
+  /* --- THE DEFINITIVE FIX --- */
+  background-image: none; /* This ensures no background image is applied */
+  background-size: 100% 100%; 
+  
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(13, 17, 23, 0.85); /* The overlay remains */
+  z-index: -1;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 750px;
+}
+
+.hero-photo {
+  width: clamp(120px, 15vw, 150px);
+  height: clamp(120px, 15vw, 150px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+  box-shadow: 0 0 40px -10px var(--color-accent-glow);
+  margin-bottom: 2rem;
+}
+
+.hero-name {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subheading {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+  margin: 0 auto 3rem auto;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  min-width: 150px;
+}
+
+.stat-item h3 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--color-accent);
+}
+
+.stat-item p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* 7. SKILLS SECTION
+------------------------------------------------- */
+/* ... All other sections are correct ... */
+.skills-section {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
+.skills-marquee {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+
+.skills-track {
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.skill-tag {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  margin: 0 0.75rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.skill-tag:hover {
+  background-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+
+/* 8. EXPERIENCE SECTION
+------------------------------------------------- */
+.experience-card {
+  width: min(95%, 800px);
+  height: 85%;
+  background-color: rgba(22, 27, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.experience-card h3 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.experience-card p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  max-width: 60ch;
+  margin-top: 1rem;
+}
+
+.experience-card a {
+  margin-top: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* 9. CONTACT SECTION
+------------------------------------------------- */
+.contact-panel {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-panel h2 {
+  color: var(--color-accent);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.contact-panel h3 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.contact-panel p {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-background);
+  background-color: var(--color-accent);
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.social-links-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.social-link {
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+}
+
+/* 10. RESPONSIVE STYLES
+------------------------------------------------- */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 0 1rem;
+  }
+  .section-panel {
+    padding: 4rem 0;
+  }
+  .section-heading {
+    margin-bottom: 3rem;
+  }
+
+  /* NAVBAR RESPONSIVE */
+  .navbar-container {
+    width: calc(100vw - 2rem);
+    justify-content: space-between;
+  }
+  .desktop-nav-links,
+  .desktop-contact-btn {
+    display: none;
+  }
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  /* HERO RESPONSIVE */
+  .hero-stats {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+
+  .hero-section {
+    aspect-ratio: auto;
+    min-height: 100vh;
+    background-attachment: scroll;
+    background-size: cover; /* Revert to cover on mobile to avoid extreme distortion */
+  }
+
+  /* EXPERIENCE RESPONSIVE */
+  .experience-card {
+    padding: 2rem;
+  }
+
+  /* CONTACT RESPONSIVE */
+  .contact-panel {
+    padding: 3rem 1.5rem;
+  }
+}
