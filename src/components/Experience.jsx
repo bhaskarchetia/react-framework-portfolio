@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 // --- CRITICAL FIX: Your project data has been restored here ---
 const experiences = [
-    { title: "AHP Decision-Making Web App", description: "A full-fledged decision support system using JavaScript & React, based on Analytic Hierarchy Process logic.", link: "https://mcdm-system.netlify.app/", linkText: "live-demo" },
+    { title: "AHP Decision-Making Web App", description: "A full-fledged decision support system using JavaScript & React, based on Analytic Hierarchy Process logic.", link: "https://decisionmakingsystem.netlify.app/", linkText: "live-demo" },
     { title: "Full Stack Web Development Intern at Unified Mentor", description: "Contributed to the development of full-stack web applications, gaining hands-on experience with modern frameworks and technologies.", link: "https://www.linkedin.com/in/bhaskar-chetia-433171233/overlay/1754469367801/single-media-viewer/?profileId=ACoAADo4_CcBFywU5jl80ck-d0XWp-15rd9cU_M", linkText: "view-certificate" },
     { title: "Internship: Animal Welfare People", description: "Assisted in organizing street animal rescue, food & vaccination drives, and supported legal actions.", link: "https://www.linkedin.com/in/bhaskar-chetia-433171233/overlay/1721457754154/single-media-viewer/?profileId=ACoAADo4_CcBFywU5jl80ck-d0XWp-15rd9cU_M", linkText: "view-certificate" },
     { title: "CAD DESK Certified", description: "Proficiency in computer-aided design, drafting software, and engineering principles.", link: "https://www.linkedin.com/in/bhaskar-chetia-433171233/overlay/1751647217547/single-media-viewer/?profileId=ACoAADo4_CcBFywU5jl80ck-d0XWp-15rd9cU_M", linkText: "view-certificate" }
