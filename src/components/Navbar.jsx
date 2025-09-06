@@ -1,8 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 
-const navLinks = [ { name: "About", href: "#about" }, { name: "Skills", href: "#skills" }, { name: "Projects", href: "#experience" }];
-const photoURL = "https://media.licdn.com/dms/image/v2/D4D03AQHocXbcTeDeDA/profile-displayphoto-shrink_800_800/B4DZdZamyNHkAg-/0/1749551837522?e=1757548800&v=beta&t=B5ao8rHxELnPyffFhB8jCHOr8L9scralvor0vI_a77o";
+// New: Import your local profile picture
+import profileImage from '../assets/profile-pic.jpg'; 
+
+const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#experience" }
+];
+
+// We will now use the imported local image
+// const photoURL = "https://media.licdn.com/dms/image/v2/D4D03AQHocXbcTeDeDA/profile-displayphoto-shrink_800_800/0/1709551837522?e=1717548800&v=beta&t=B5ao8rHxELnPyffFhB8jCHOr8L9scralvor0vI_a77o";
 
 const Navbar = ({ lenis }) => {
     const [scrolled, setScrolled] = useState(false);
@@ -29,7 +38,8 @@ const Navbar = ({ lenis }) => {
             <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', width: 'auto', zIndex: 1000 }}>
                 <motion.div variants={navVariants} initial="hidden" animate={scrolled ? "visible" : "hidden"} className="navbar-container">
                     <motion.a href="#" onClick={(e) => { e.preventDefault(); handleScrollTo(0); }} className="navbar-logo" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
-                        <img src={photoURL} alt="Bhaskar Jyoti Chetia" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
+                        {/* Updated: Use the imported profile image */}
+                        <img src={profileImage} alt="Bhaskar Jyoti Chetia" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
                         <span>Bhaskar J. Chetia</span>
                     </motion.a>
                     <ul className="desktop-nav-links">
@@ -39,6 +49,16 @@ const Navbar = ({ lenis }) => {
                                 <motion.div variants={linkHighlightVariants} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.1)', borderRadius: '9999px', zIndex: -1 }} />
                             </motion.li>
                         ))}
+                        {/* Updated: Standardized "Download CV" button */}
+                        <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <a
+                                href="/Bhaskar_Jyoti_Chetia_CV.pdf" // Ensure your CV is in the 'public' folder
+                                download="Bhaskar_Jyoti_Chetia_CV.pdf"
+                                className="nav-download-cv-btn" // A new class for standard button styling
+                            >
+                                Download CV
+                            </a>
+                        </motion.li>
                     </ul>
                     <motion.a href="#contact" onClick={(e) => { e.preventDefault(); handleScrollTo('#contact'); }} className="desktop-contact-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.15 }}>Contact</motion.a>
                     <div className="mobile-menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -53,6 +73,17 @@ const Navbar = ({ lenis }) => {
                     <motion.div className="mobile-menu-overlay" variants={mobileMenuVariants} initial="closed" animate="open" exit="closed">
                         <ul>
                             {navLinks.map(link => (<li key={link.name}><a href={link.href} onClick={(e) => { e.preventDefault(); handleScrollTo(link.href); }}>{link.name}</a></li>))}
+                            {/* Updated: Standardized "Download CV" button for mobile */}
+                            <li>
+                                <a
+                                    href="/Bhaskar_Jyoti_Chetia_CV.pdf" // Ensure your CV is in the 'public' folder
+                                    download="Bhaskar_Jyoti_Chetia_CV.pdf"
+                                    className="mobile-download-cv-btn" // A new class for standard button styling
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Download CV
+                                </a>
+                            </li>
                         </ul>
                         <a href="#contact" className="mobile-menu-contact-btn" onClick={(e) => { e.preventDefault(); handleScrollTo('#contact'); }}>Contact</a>
                     </motion.div>

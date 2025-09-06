@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
+// Step 1: Import the local image file
+import profileImage from '../assets/profile-pic.jpg'; // Adjust the path based on your folder structure
+
 const Hero = () => {
-    const photoURL = "https://media.licdn.com/dms/image/v2/D4D03AQHocXbcTeDeDA/profile-displayphohttps://media.licdn.com/dms/image/v2/D4D03AQHCJqa2a1CDTA/profile-displayphoto-crop_800_800/B4DZkf7eibJEAI-/0/1757177310725?e=1759968000&v=beta&t=IjkbCebVsrzV9s4G-bvOjh2MEkMma9rCwkytLQoRZAkto-shrink_800_800/B4DZdZamyNHkAg-/0/1749551837522?e=1757548800&v=beta&t=B5ao8rHxELnPyffFhB8jCHOr8L9scralvor0vI_a77o";
+    // Step 2: Use the imported image as the source
+    const photoURL = profileImage;
     const targetRef = useRef(null);
 
     // Variants for the initial "fade in" animation
@@ -20,7 +24,6 @@ const Hero = () => {
     };
     
     return (
-        // The inline 'style' prop has been removed to stop applying the background image
         <motion.section
             ref={targetRef}
             id="home"
@@ -32,7 +35,7 @@ const Hero = () => {
         >
             <div className="hero-content">
                 <motion.img
-                    src={photoURL}
+                    src={photoURL} // This now refers to your imported local image
                     alt="Bhaskar Jyoti Chetia"
                     className="hero-photo"
                     variants={entryVariants}
