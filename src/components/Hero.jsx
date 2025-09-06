@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 const Hero = () => {
-    const photoURL = "https://media.licdn.com/dms/image/v2/D4D03AQHocXbcTeDeDA/profile-displayphoto-shrink_800_800/B4DZdZamyNHkAg-/0/1749551837522?e=1757548800&v=beta&t=B5ao8rHxELnPyffFhB8jCHOr8L9scralvor0vI_a77o";
+    const photoURL = "https://media.licdn.com/dms/image/v2/D4D03AQHocXbcTeDeDA/profile-displayphohttps://media.licdn.com/dms/image/v2/D4D03AQHCJqa2a1CDTA/profile-displayphoto-crop_800_800/B4DZkf7eibJEAI-/0/1757177310725?e=1759968000&v=beta&t=IjkbCebVsrzV9s4G-bvOjh2MEkMma9rCwkytLQoRZAkto-shrink_800_800/B4DZdZamyNHkAg-/0/1749551837522?e=1757548800&v=beta&t=B5ao8rHxELnPyffFhB8jCHOr8L9scralvor0vI_a77o";
     const targetRef = useRef(null);
 
     // Variants for the initial "fade in" animation
